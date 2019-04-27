@@ -1,10 +1,12 @@
 import React from 'react';
-import './Statistique.css;'
+import './Statistique.css';
 
-export default Statistique = ()  => {
+function Statistique() {
   return (
     <div>
-      
+      <h1>STATISTIQUE</h1>
     </div>
   )
 }
+
+export default Statistique;
