@@ -1,24 +1,23 @@
-.homeGrid {
+.gridHome {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 10% 35% 20% 35%;
+  grid-template-rows: 40% 20% 20%;
   z-index: 1;
 }
 
-h1{
-  background-color: green;
+.graphHome{
   margin: 0;
 }
 
-h2{
-  background-color: blue;
+.infohHome{
   margin: 0;
 }
 
-#meteo{
-  margin: 0;
+.meteoHome{
+  margin: auto;
+
 }

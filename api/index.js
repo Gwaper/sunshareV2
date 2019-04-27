@@ -12,9 +12,17 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/realtimedata', (req, res) => {
-  res.send('realtime data lol')
+app.get('/consomation/', (req, res) => {
+  
 });
+
+app.get('/localisation', (req, res) => {
+  axios.get('https://ipapi.co/json')
+  .then((result) => {
+    res.send({"lat": result.data.latitude, "lng": result.data.longitude});
+  })
+})
+
 
 app.listen(config.data.port, () => {
   console.log(colors.bgGreen(colors.black(`Server is up on ${config.data.port}`)));

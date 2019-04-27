@@ -7,7 +7,7 @@ import Axios from 'axios';
 const position = {
   lat: 47.21725, 
   lng: -1.55336
-} 
+}
 
 const apiKey = "PGdqq8p32HZKZ3wM5JghtkZ1TwWvyt5E";
 
