@@ -111,6 +111,7 @@ exports.generateMockData = (payload) => {
   SnSrSimul.injectidx = SnSrSimul.injectidx + inject;
   SnSrSimul.prodidx = SnSrSimul.prodidx + prod;
   SnSrSimul.autoconsoidx = SnSrSimul.autoconsoidx + autoconso;
+  console.log(prodmoy)
   SnSrSimul.prodmoyidx = SnSrSimul.prodmoyidx + prodmoy;
   SnSrSimul.prodmaxidx = SnSrSimul.prodmaxidx + prodmax;
 

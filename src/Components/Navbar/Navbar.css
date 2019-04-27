@@ -1,0 +1,9 @@
+.menu{
+  z-index: 1000;
+  position: fixed;
+  justify-content: center;
+}
+
+.btnMenu{
+  width: 5em;
+}
