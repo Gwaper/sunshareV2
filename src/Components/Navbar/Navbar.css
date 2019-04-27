@@ -2,8 +2,20 @@
   z-index: 1000;
   position: fixed;
   justify-content: center;
+  
 }
 
 .btnMenu{
-  width: 5em;
+}
+
+.active{
+  background-color: #b8faec!important;   
+}
+
+.ui.massive{
+  font-size: 3.5vh !important;
+}
+
+i.icon{
+  z-index: 100!important;
 }

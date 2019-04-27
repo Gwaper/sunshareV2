@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Menu, Sidebar, ButtonGroup } from 'semantic-ui-react';
+import {  Menu } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
@@ -11,7 +11,11 @@ export default function Navbar() {
 
   return (
     <div>
-      <Menu className='menu' fixed='bottom' borderless='false' size='massive'>
+      <Menu 
+        className='menu' 
+        fixed='bottom' 
+        borderless='false' 
+        size='massive'>
         <NavLink exact to='/'>
           <Menu.Item
             className='btnMenu'
