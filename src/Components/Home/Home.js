@@ -4,22 +4,12 @@ import MeteoDay from '../MeteoDay/MeteoDay';
 // import { ResponsiveSunburst } from '@nivo/sunburst'
 
 export default function Home ({data}) {
-  return (
-    <div className="sunChart">
-      {/* <ResponsiveSunburst
-        data={data}
-        identity="name"
-        value="percent"
-        colors={["#86EBA0", "#FF885C"]}
-        cornerRadius={0}
-        childColor={"#57A5FF"}
-        borderWidth={3}
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
-        isInteractive={true}
-      /> */}
-      <MeteoDay/>
+  return (      
+    <div className='homeGrid'>
+      <h2>HOME 10%</h2>
+      <h1>35%</h1>
+      <MeteoDay id="meteo"/>
+      <h1>35%</h1>
     </div>
   )
 }
