@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Home from './Components/Home/Home';
 import Prevision from './Components/Prevision/Prevision';
