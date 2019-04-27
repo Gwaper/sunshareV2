@@ -11,20 +11,22 @@ export default function Navbar() {
 
   return (
     <div>
-      <Menu className='menu' fixed='bottom' size='massive'>
+      <Menu className='menu' fixed='bottom' borderless='false' size='massive'>
         <NavLink exact to='/'>
           <Menu.Item
             className='btnMenu'
             active={activeItem === 'home'}
             onClick={() => handleItemClick('home')}
-            icon='home'>
+            icon='home'
+            >
           </Menu.Item></NavLink>
         <NavLink to='/prevision'>
           <Menu.Item
             className='btnMenu'
             active={activeItem === 'prevision'}
             onClick={() => handleItemClick('prevision')}
-            icon='area graph'>
+            icon='area graph'
+            >
           </Menu.Item>
         </NavLink>
         <NavLink to='/statistique'>
@@ -32,7 +34,8 @@ export default function Navbar() {
             className='btnMenu'
             active={activeItem === 'statistique'}
             onClick={() => handleItemClick('statistique')}
-            icon='line graph'>
+            icon='line graph'
+            >
           </Menu.Item>
         </NavLink>
         <NavLink to='/contact'>
@@ -40,7 +43,8 @@ export default function Navbar() {
             className='btnMenu'
             active={activeItem === 'contact'}
             onClick={() => handleItemClick('contact')}
-            icon='mail outline'>
+            icon='mail outline'
+            >
           </Menu.Item>
         </NavLink>
       </Menu>
