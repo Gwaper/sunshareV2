@@ -1,0 +1,12 @@
+.menuTitle{
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+.menuSize{
+  font-size: 1.6rem;
+}
+
+.ui.menu .item{
+  position: static;
+}

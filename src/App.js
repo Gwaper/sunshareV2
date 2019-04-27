@@ -39,22 +39,25 @@ function App() {
           width='thin'
           direction='right'
         >
-          <Menu.Item as='a'>
+          <Menu.Item className='menuTitle'>
+            SunShare
+          </Menu.Item>
+          <Menu.Item as='a' className='menuSize'>
             <NavLink exact to='/'>
               Home
             </NavLink>
           </Menu.Item>
-          <Menu.Item as='a'>
+          <Menu.Item as='a' className='menuSize'>
             <NavLink to='/Prevision'>
               Prévision
             </NavLink>
           </Menu.Item>
-          <Menu.Item as='a'>
+          <Menu.Item as='a' className='menuSize'>
             <NavLink to='/Statistique'>
               Statistique
             </NavLink>
           </Menu.Item>
-          <Menu.Item as='a'>
+          <Menu.Item as='a' className='menuSize'>
             <NavLink to='/Contact'>
               Contact
             </NavLink>
