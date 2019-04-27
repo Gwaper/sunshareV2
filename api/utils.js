@@ -121,4 +121,3 @@ exports.generateMockData = (payload) => {
 
   return msg2;
 }
-

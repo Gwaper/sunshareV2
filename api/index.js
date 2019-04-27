@@ -12,8 +12,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send('')
+app.get('/realtimedata', (req, res) => {
+  res.send('realtime data lol')
 });
 
 app.listen(config.data.port, () => {
