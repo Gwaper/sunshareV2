@@ -1,6 +1,47 @@
-exports.generateMockData = (data) => {
-  // let msg2 = {};
-  // let msg = {}
+var fs = require("fs");
+
+
+
+
+let SnSrSimul = {
+  timestamp: new Date().getTime() - 12*60*60*1000, //365*24*60*60*1000,
+  time: new Date(new Date().getTime() - 12*60*60*1000),
+  soutiridx: 7003029.282917704,
+  injectidx: 39192296.51599542,
+  prodidx: 33698025.71109029,
+  autoconsoidx: 1505728.1950948501,
+  prodmoyidx: 31432228.449570265,
+  prodmaxidx: 55864457.89914053
+}
+
+
+
+
+let intervalFakeData = setInterval(() => {
+    let result = generate(SnSrSimul);
+    SnSrSimul = result;
+
+    fs.readFile('bdd.json', function (err, data) {
+      if (err) {
+         return console.error(err);
+      }
+     
+     fs.writeFile("bdd.json", (data += JSON.stringify(result)), function(err) {
+      if(err) {
+        return console.log(err);
+      }
+
+      console.log("The file was saved!");
+      });
+   });
+
+  
+  console.log(result);
+}, 5000)
+
+
+
+function generate(data) {
 
   let SnSrSimul = data;
 
@@ -9,11 +50,9 @@ exports.generateMockData = (data) => {
   //onTime + (new Date().getTime() - onTime)* 60;
   // var timeNow = onTime.getTime() - 365*24*60*60*1000 + (msg.payload - onTime.getTime())*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
 
-  // var timeNow = 1524805200 + (new Date().getTime() - 1524805200) 12*60*60*1000) //*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
-  var timeNow = SnSrSimul.timestamp + (new Date().getTime() - SnSrSimul.starttime)*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
+  var timeNow =  (new Date().getTime() - 12*60*60*1000) //*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
 
-
-  timeNow = new Date(timeNow);
+   timeNow = new Date(timeNow);
   let conso = 0;
   let soutir = 0;
   let inject = 0;
