@@ -1,65 +1,49 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Button, Menu, Sidebar, ButtonGroup } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import './Navbar.css';
 
 export default function Navbar() {
-  const [visible, setVisible] = useState(false);
-
-  const handleHideClick = () => setVisible(false);
-  const handleShowClick = () => setVisible(true);
-  const handleSidebarHide = () => setVisible(false);
+  const [activeItem, setActiveItem] = useState('home');
+  const handleItemClick = (name) => {
+    setActiveItem(name);
+  }
 
   return (
     <div>
-      <ButtonGroup className='btnDroite'>
-        <Button
-          disabled={visible}
-          onClick={handleShowClick}
-          icon='bars'
-          className='btnMenu'
-          size='massive'
-        />
-      </ButtonGroup>
-      <Sidebar
-        as={Menu}
-        animation='overlay'
-        icon='labeled'
-        inverted
-        onHide={handleSidebarHide}
-        vertical
-        visible={visible}
-        width='thin'
-        direction='right'
-      >
-        <Menu.Item >
-          <Button 
-            disabled={!visible} 
-            onClick={handleHideClick} 
-            icon='bars'
-            className='menuTitle'
-            />
-        </Menu.Item>
-        <Menu.Item className='menuSize'>
-          <NavLink exact to='/'>
-            Home
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item className='menuSize'>
-          <NavLink to='/Prevision'>
-            Prévision
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item className='menuSize'>
-          <NavLink to='/Statistique'>
-            Statistique
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item className='menuSize'>
-          <NavLink to='/Contact'>
-            Contact
-          </NavLink>
-        </Menu.Item>
-      </Sidebar>
+      <Menu className='menu' fixed='bottom' size='massive'>
+        <NavLink exact to='/'>
+          <Menu.Item
+            className='btnMenu'
+            active={activeItem === 'home'}
+            onClick={() => handleItemClick('home')}
+            icon='home'>
+          </Menu.Item></NavLink>
+        <NavLink to='/prevision'>
+          <Menu.Item
+            className='btnMenu'
+            active={activeItem === 'prevision'}
+            onClick={() => handleItemClick('prevision')}
+            icon='area graph'>
+          </Menu.Item>
+        </NavLink>
+        <NavLink to='/statistique'>
+          <Menu.Item
+            className='btnMenu'
+            active={activeItem === 'statistique'}
+            onClick={() => handleItemClick('statistique')}
+            icon='line graph'>
+          </Menu.Item>
+        </NavLink>
+        <NavLink to='/contact'>
+          <Menu.Item
+            className='btnMenu'
+            active={activeItem === 'contact'}
+            onClick={() => handleItemClick('contact')}
+            icon='mail outline'>
+          </Menu.Item>
+        </NavLink>
+      </Menu>
     </div>
   )
 }
