@@ -3,7 +3,7 @@ const config = require('./config.js');
 const express = require('express');
 const colors = require('colors');
 const axios = require('axios');
-
+const previson =require ('./prevision.js')
 const app = express();
 
 app.use((req, res, next) => {
@@ -12,8 +12,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/realtimedata', (req, res) => {
+app.get('/real', (req, res) => {
   res.send('realtime data lol')
+});
+app.get('/real', (req, res) => {
+for (i=0;i<48;i+2){
+  
+}
+
 });
 
 app.listen(config.data.port, () => {
@@ -21,3 +27,4 @@ app.listen(config.data.port, () => {
 });
 
 console.log(utils.generateMockData(new Date().getTime() - 5));
+console.log(previson)
