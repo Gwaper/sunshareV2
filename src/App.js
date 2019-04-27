@@ -5,7 +5,7 @@ import Prevision from './Components/Prevision/Prevision';
 import Statistique from './Components/Statistique/Statistique';
 import Contact from './Components/Contact/Contact';
 
-import { Button, Menu, Sidebar } from 'semantic-ui-react';
+import { Button, Menu, Sidebar, ButtonGroup } from 'semantic-ui-react';
 import { Route, Switch, BrowserRouter, NavLink } from 'react-router-dom';
 
 
@@ -18,15 +18,15 @@ function App() {
 
   return (
     <div>
-      <Button.Group>
-        <Button disabled={visible} onClick={handleShowClick}>
-          Show sidebar
-          </Button>
-        <Button disabled={!visible} onClick={handleHideClick}>
-          Hide sidebar
-          </Button>
-      </Button.Group>
-
+      <ButtonGroup className='btnDroite'>
+        <Button
+          disabled={visible}
+          onClick={handleShowClick}
+          icon='bars'
+          className='btnMenu'
+          size='massive'
+        />
+      </ButtonGroup>
       <BrowserRouter>
         <Sidebar
           as={Menu}
@@ -39,25 +39,30 @@ function App() {
           width='thin'
           direction='right'
         >
-          <Menu.Item className='menuTitle'>
-            SunShare
+          <Menu.Item >
+            <Button 
+              disabled={!visible} 
+              onClick={handleHideClick} 
+              icon='bars'
+              className='menuTitle'
+              />
           </Menu.Item>
-          <Menu.Item as='a' className='menuSize'>
+          <Menu.Item className='menuSize'>
             <NavLink exact to='/'>
               Home
             </NavLink>
           </Menu.Item>
-          <Menu.Item as='a' className='menuSize'>
+          <Menu.Item className='menuSize'>
             <NavLink to='/Prevision'>
               Prévision
             </NavLink>
           </Menu.Item>
-          <Menu.Item as='a' className='menuSize'>
+          <Menu.Item className='menuSize'>
             <NavLink to='/Statistique'>
               Statistique
             </NavLink>
           </Menu.Item>
-          <Menu.Item as='a' className='menuSize'>
+          <Menu.Item className='menuSize'>
             <NavLink to='/Contact'>
               Contact
             </NavLink>
@@ -72,6 +77,7 @@ function App() {
         </Switch>
       </BrowserRouter>
     </div>
+
   );
 }
 

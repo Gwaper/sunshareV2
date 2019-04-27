@@ -1,12 +1,20 @@
-.menuTitle{
-  font-size: 1.7em;
-  font-weight: bold;
-}
 
-.menuSize{
+.menuSize {
   font-size: 1.6rem;
 }
 
-.ui.menu .item{
+.ui.menu .item {
   position: static;
+}
+
+.btnMenu{
+  right:0;
+  position: absolute;
+  z-index: 5!important;
+  background-color: transparent!important;
+}
+
+.menuTitle{
+  background-color: transparent!important;
+  color: white !important;
 }
