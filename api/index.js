@@ -20,4 +20,4 @@ app.listen(config.data.port, () => {
   console.log(colors.bgGreen(colors.black(`Server is up on ${config.data.port}`)));
 });
 
-// console.log(utils.generateMockData(new Date().getTime() - 5));
+console.log(utils.generateMockData(new Date().getTime() - 5));
