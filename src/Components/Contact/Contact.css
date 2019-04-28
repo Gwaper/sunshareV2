@@ -5,16 +5,23 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows:  80% 20%;
   z-index: 1;
 }
 
-h1{
-  background-color: green;
-  margin: 0;
+img{
+  width: 15em;
+  height: auto;
+  margin: 10%;
 }
 
-h2{
-  background-color: blue;
-  margin: 0;
+.btnContact{
+  position: relative;
+  padding: 20%;
+}
+
+p{
+  position: absolute;
+  bottom: 10%;
+  color: gray; 
 }
