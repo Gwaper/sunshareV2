@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css';
 import MeteoDay from '../MeteoDay/MeteoDay';
-// import { ResponsiveSunburst } from '@nivo/sunburst'
 
 export default function Home () {
   return (      

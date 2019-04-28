@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
-  const [activeItem, setActiveItem] = useState('home');
+  const [activeItem, setActiveItem] = useState(window.location.pathname.replace(/^\/([^\/]*).*$/, '$1'));
   const handleItemClick = (name) => {
     setActiveItem(name);
   }
-
+  
   return (
     <div>
       <Menu 
@@ -23,7 +23,8 @@ export default function Navbar() {
             onClick={() => handleItemClick('home')}
             icon='home'
             >
-          </Menu.Item></NavLink>
+          </Menu.Item>
+        </NavLink>
         <NavLink to='/prevision'>
           <Menu.Item
             className='btnMenu'

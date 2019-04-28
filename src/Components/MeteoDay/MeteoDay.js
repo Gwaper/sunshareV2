@@ -9,7 +9,7 @@ const position = {
   lng: -1.55336
 }
 
-const apiKey = "PGdqq8p32HZKZ3wM5JghtkZ1TwWvyt5E";
+const apiKey = "cvbBLx1FFQQXtKEgqU4o6KATicAkNsYn";
 
 export default function MeteoDay() {
 
@@ -18,7 +18,6 @@ export default function MeteoDay() {
   useEffect(() => {
     Axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${position.lat}%2C%20${position.lng}`)
     .then(result => {
-      console.log(apiKey)
       Axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${result.data.Key}?apikey=${apiKey}&language=fr-FR&metric=true&details=true`)
       .then(result => {
         setMeteo(result.data);
