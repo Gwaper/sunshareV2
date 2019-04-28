@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import '../node_modules/react-vis/dist/style.css';
+
 import Home from './Components/Home/Home';
 import Prevision from './Components/Prevision/Prevision';
 import Statistique from './Components/Statistique/Statistique';
@@ -7,7 +9,6 @@ import Contact from './Components/Contact/Contact';
 import Navbar from './Components/Navbar/Navbar';
 
 import { Route, Switch } from 'react-router-dom';
-
 
 function App() {
   return (
@@ -24,22 +25,6 @@ function App() {
 }
 
 export default App;
-
-let data = {
-  "name": "Information",
-  "children": [{
-    "name": "production",
-    "percent": 20,
-    "children": [{
-      "name": "injection",
-      "percent": 20
-    }]
-  }, {
-    "name": "tirage",
-    "percent": 80
-  }]
-}
-
 // green : #86EBA0
 // blue : #57A5FF
 // orange : #FF885C

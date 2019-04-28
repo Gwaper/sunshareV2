@@ -5,21 +5,26 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 65% 30% 65% 30%;
+  grid-template-rows: 45% 45%;
   z-index: 1;
 }
 
-h1{
-  background-color: green;
-  margin: 0;
+.titleProduction {
+
 }
 
-h2{
-  background-color: blue;
-  margin: 0;
+.production {
+  margin: auto;
 }
 
-h3{
-  background-color: red;
-  margin: 0;
+.gridStatProd {
+  margin-top: 20px !important;
+
+  margin: auto;
+}
+
+.gridStatConso {
+  margin-top: 20px !important;
+  margin-bottom: 5rem !important;
+  margin: auto;
 }

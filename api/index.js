@@ -75,7 +75,7 @@ setInterval(() => {
   }
   historyLinkyData.push(newLinkyData);
   SnSrSimul = Object.assign({}, newLinkyData);
-}, 500);
+}, 2000);
 
 const generateParabol = (sunSetTmp, sunRiseTmp) => {
   let tomorrowSunRise = new Date(sunRiseTmp*1000);

@@ -9,7 +9,7 @@ const position = {
   lng: -1.55336
 }
 
-const apiKey = "cvbBLx1FFQQXtKEgqU4o6KATicAkNsYn";
+const apiKey = "34XJCIr6c6sOHDeeeCpoNgWd9BUHyT4X";
 
 export default function MeteoDay() {
 
@@ -24,17 +24,17 @@ export default function MeteoDay() {
       })
     })
   }, [])
-
+  console.log(meteo)
   return (
     <div>
       {meteo ? 
       <Card className='Meteo'>
         <Card.Content>
-          <Image floated='right' size='tiny' src={`https://vortex.accuweather.com/adc2010/images/slate/icons/${meteo.DailyForecasts[0].Day.Icon}.svg`} alt={meteo.DailyForecasts[0].Day.IconPhrase} />
-          <Card.Header>{meteo.DailyForecasts[0].Day.IconPhrase}</Card.Header>
-          <Card.Meta>{moment(new Date()).format('dddd')}</Card.Meta>
+          <Image floated='right' size='tiny' src={`https://vortex.accuweather.com/adc2010/images/slate/icons/${meteo.DailyForecasts[1].Day.Icon}.svg`} alt={meteo.DailyForecasts[1].Day.IconPhrase} />
+          <Card.Header>{meteo.DailyForecasts[1].Day.IconPhrase}</Card.Header>
+          <Card.Meta>{moment(new Date(meteo.DailyForecasts[1].Date)).format('dddd')}</Card.Meta>
           <Card.Description>
-            {Math.round(meteo.DailyForecasts[0].Temperature.Minimum.Value)}° | {Math.round(meteo.DailyForecasts[0].Temperature.Maximum.Value)}°
+            {Math.round(meteo.DailyForecasts[1].Temperature.Minimum.Value)}° | {Math.round(meteo.DailyForecasts[1].Temperature.Maximum.Value)}°
           </Card.Description>
         </Card.Content>
       </Card> : null }

@@ -17,7 +17,10 @@
   margin: 0;
 }
 
+.titleProduction {
+  margin-top: 10px;
+}
 .meteoHome{
   margin: auto;
-
+  margin-bottom: 100px;
 }
