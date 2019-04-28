@@ -3,13 +3,27 @@ const config = require('./config.js');
 const express = require('express');
 const colors = require('colors');
 const axios = require('axios');
-// const prevision =require ('./prevision.js')
+
 const app = express();
 
 const productionPV = 300;
 const prevision = [];
 
+let SnSrSimul = {
+  starttime : new Date(),
+  timestamp: 1524805200000,
+  time: new Date(1524805200000),
+  soutiridx: 7003029.282917704,
+  injectidx: 39192296.51599542,
+  prodidx: 33698025.71109029,
+  autoconsoidx: 1505728.1950948501,
+  prodmoyidx: 31432228.449570265,
+  prodmaxidx: 55864457.89914053
+}
+
+let historyLinkyData = [];
 const apiKey = "cvbBLx1FFQQXtKEgqU4o6KATicAkNsYn";
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*"); // keep this if your api accepts cross-origin requests
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -17,8 +31,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/realtime', (req, res) => {
-  res.send('realtime data lol')
+  console.log(historyLinkyData);
+    res.send(historyLinkyData);
 });
+
 app.get('/prevision', (req, res) => {
   let prevision = generateParabol(1556390220, 1556339580);
   let j = 0;
@@ -41,9 +57,25 @@ app.get('/prevision', (req, res) => {
     })
 });
 
+app.get('/localisation', (req, res) => {
+  axios.get('https://ipapi.co/json')
+  .then((result) => {
+    res.send({"lat": result.data.latitude, "lng": result.data.longitude});
+  })
+})
+
 app.listen(config.data.port, () => {
   console.log(colors.bgGreen(colors.black(`Server is up on ${config.data.port}`)));
 });
+
+setInterval(() => {
+  let newLinkyData = utils.generateMockData(SnSrSimul);
+  if(historyLinkyData.length >= 96) {
+    historyLinkyData.splice(0,1);
+  }
+  historyLinkyData.push(newLinkyData);
+  SnSrSimul = Object.assign({}, newLinkyData);
+}, 1000);
 
 const generateParabol = (sunSetTmp, sunRiseTmp) => {
   let tomorrowSunRise = new Date(sunRiseTmp*1000);

@@ -1,27 +1,19 @@
-exports.generateMockData = (payload) => {
-  let msg2 = {};
-  let msg = {
-    payload: payload
-  }
+exports.generateMockData = (data) => {
+  // let msg2 = {};
+  // let msg = {}
+
+  let SnSrSimul = data;
 
   let secondMonth = 0;
-  let onTime= new Date() 
-  let timeNow = onTime - 365*24*60*60*1000 + (msg.payload - onTime)* 60;
+  let onTime= SnSrSimul.timestamp
+  //onTime + (new Date().getTime() - onTime)* 60;
+  // var timeNow = onTime.getTime() - 365*24*60*60*1000 + (msg.payload - onTime.getTime())*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
 
-  msg.timenow = timeNow;
+  // var timeNow = 1524805200 + (new Date().getTime() - 1524805200) 12*60*60*1000) //*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
+  var timeNow = SnSrSimul.timestamp + (new Date().getTime() - SnSrSimul.starttime)*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
+
+
   timeNow = new Date(timeNow);
-
-  let SnSrSimul = {
-    timestamp: 1524820844838,
-    time: "2018-04-27T09:20:44.838Z",
-    soutiridx: 7003029.282917704,
-    injectidx: 39192296.51599542,
-    prodidx: 33698025.71109029,
-    autoconsoidx: 1505728.1950948501,
-    prodmoyidx: 31432228.449570265,
-    prodmaxidx: 55864457.89914053
-  }
-
   let conso = 0;
   let soutir = 0;
   let inject = 0;
@@ -114,10 +106,11 @@ exports.generateMockData = (payload) => {
   SnSrSimul.prodmoyidx = SnSrSimul.prodmoyidx + prodmoy;
   SnSrSimul.prodmaxidx = SnSrSimul.prodmaxidx + prodmax;
 
-  msg2.SnSrSimul = SnSrSimul;
-  msg2.payload = 'SIMUL';
-  msg2.count = SnSrSimul.prodidx;
-  msg2.timenow = msg.timenow;
 
-  return msg2;
+  // msg2.SnSrSimul = SnSrSimul;
+  // msg2.payload = 'SIMUL';
+  // msg2.count = SnSrSimul.prodidx;
+  // msg2.timenow = msg.timenow;
+
+  return SnSrSimul;
 }
