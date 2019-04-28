@@ -3,12 +3,11 @@ import './Statistique.css';
 
 export default  function Statistique() {
   return (
-    <div className='statGrid'>
-      <h2>STAT 10%</h2>
-      <h1>60%</h1>
-      <h3>30%</h3>
-      <h1>60%</h1>
-      <h3>30%</h3>
+    <div className='gridStat'>
+      <div className="gridStatProd">60%</div>
+      <div className="gridDetailProd">60%</div>
+      <div className="gridStatConso">60%</div>
+      <div className="gridDetailConso">60%</div>
     </div>
   )
 }
