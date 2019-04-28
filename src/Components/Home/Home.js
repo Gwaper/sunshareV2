@@ -21,7 +21,6 @@ export default function Home () {
         if(prod > 360) {
           prod = 360
         }
-
         conso = Math.round(360- prod)
         setConso(conso)
         setProd(prod)

@@ -55,9 +55,7 @@ export default  function Statistique() {
 
         setDataProduction(dataTempProd);
         setDataConsomtion(dataTempConso);
-  
-        console.log(dataTempConso)
-      })
+        })
     }, 2000)
   }, [])
 

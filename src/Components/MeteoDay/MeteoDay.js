@@ -24,7 +24,6 @@ export default function MeteoDay() {
       })
     })
   }, [])
-  console.log(meteo)
   return (
     <div>
       {meteo ? 

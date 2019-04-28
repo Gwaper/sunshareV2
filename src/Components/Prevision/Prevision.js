@@ -11,12 +11,9 @@ export default function Prevision() {
   const [previsionMaxData, setPrevisionMaxData] = useState(0);
   const [previsionMoyData, setPrevisionMoyData] = useState(0);
 
-
-
   useEffect(() => {
     axios.get('http://localhost:8000/prevision')
     .then((result) => {
-      console.log(result.data)
       let max = 0;
       let moy = 0;
       let tempsPred = [];
@@ -29,7 +26,7 @@ export default function Prevision() {
       }
       setPrevisionData(tempsPred);
       setPrevisionMaxData(Math.round(max*100)/100);
-      setPrevisionMoyData(Math.round((moy/tempsPred.length)*100)/100)
+      setPrevisionMoyData(Math.round((moy/tempsPred.length)*100)/100);
     })
   }, [])
 

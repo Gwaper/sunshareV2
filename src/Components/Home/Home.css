@@ -5,16 +5,18 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 40% 20% 20%;
-  z-index: 1;
+  grid-template-rows: 35% 20% 45%;
 }
 
 .graphHome{
   margin: 0;
+  background-color: aqua;
 }
 
-.infohHome{
-  margin: 0;
+.zizi{
+  position: absolute;
+  top:0;
+  left:0;
 }
 
 .titleProduction {
