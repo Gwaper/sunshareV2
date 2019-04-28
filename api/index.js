@@ -20,27 +20,30 @@ app.get('/realtime', (req, res) => {
   res.send('realtime data lol')
 });
 app.get('/prevision', (req, res) => {
+  let prevision = generateParabol(1556390220, 1556339580);
+  let j = 0;
+  let seasonCoef = generateSeasonCoef(1556390220);
   axios.get(`https://api.openweathermap.org/data/2.5/forecast/hourly?lat=47.21725&lon=-1.55336&appid=271acc6cd729718d8e20640948e251a2`)
     .then(result => {
-      let prevision = generateParabol(1556339580, 1556390220)
-      let j = 0;
       for (i = 0; i < 48; i += 2) {
-        prevision[i] *= (1 - (result.data.list[j++].clouds.all / 200) + 0.5) * productionPV;
+        prevision[i] *= (1 - (result.data.list[j++].clouds.all / 200) + 0.5) * productionPV * seasonCoef;
       }
-
       for (i = 1; i < 48; i += 2) {
-        prevision[i] = (prevision[i - 1] + prevision[i + 1]) / 2
+        if(i+1 < 48) {
+          prevision[i] = (prevision[i - 1] + prevision[i + 1]) / 2
+        } else {
+          prevision[i] = 0;
+        }
       }
-      console.log(prevision);
     })
-  res.send(prevision)
+    .then(() => {
+      res.send(prevision)
+    })
 });
 
 app.listen(config.data.port, () => {
   console.log(colors.bgGreen(colors.black(`Server is up on ${config.data.port}`)));
 });
-
-// console.log(utils.generateMockData(new Date().getTime() - 5));
 
 const generateParabol = (sunSetTmp, sunRiseTmp) => {
   let tomorrowSunRise = new Date(sunRiseTmp*1000);
@@ -69,4 +72,10 @@ const generateParabol = (sunSetTmp, sunRiseTmp) => {
   }
 
   return prevision;
+}
+
+const generateSeasonCoef = (timestamp) => {
+  let SunCal = [0.294, 0.388, 0.758, 1.054, 1.3, 1.476, 1.576, 1.541, 1.352, 1.107, 0.768, 0.392, 0.294, 0.388];
+  let month = new Date(timestamp).getMonth()+1;
+  return SunCal[month]/1.576;
 }
