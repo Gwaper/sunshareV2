@@ -1,4 +1,4 @@
-const utils = require('./utils.js');
+const utils = require('./utils/SnSrSimul.js/index.js.js.js');
 const config = require('./config.js');
 const express = require('express');
 const colors = require('colors');
@@ -7,15 +7,13 @@ const axios = require('axios');
 const app = express();
 
 let SnSrSimul = {
-  starttime : new Date(),
-  timestamp: 1524805200000,
-  time: new Date(1524805200000),
-  soutiridx: 7003029.282917704,
-  injectidx: 39192296.51599542,
-  prodidx: 33698025.71109029,
-  autoconsoidx: 1505728.1950948501,
-  prodmoyidx: 31432228.449570265,
-  prodmaxidx: 55864457.89914053
+  starttime : new Date().getTime(),
+  soutiridx: 0,
+  injectidx: 0,
+  prodidx: 0,
+  autoconsoidx: 0,
+  prodmoyidx: 0,
+  prodmaxidx: 0
 }
 
 const productionPV = 300;
@@ -46,7 +44,7 @@ app.get('/prevision', (req, res) => {
       }
       for (i = 1; i < 48; i += 2) {
         if(i+1 < 48) {
-          prevision[i] = (prevision[i - 1] + prevision[i + 1]) / 2
+          prevision[i] = (prevision[i - 1] + prevision[i + 1]) / 2;
         } else {
           prevision[i] = 0;
         }
@@ -70,12 +68,13 @@ app.listen(config.data.port, () => {
 
 setInterval(() => {
   let newLinkyData = utils.generateMockData(SnSrSimul);
-  if(historyLinkyData.length >= 96) {
+  if(historyLinkyData.length >= 5760) { //2*60*24*2
     historyLinkyData.splice(0,1);
   }
   historyLinkyData.push(newLinkyData);
   SnSrSimul = Object.assign({}, newLinkyData);
-}, 2000);
+  console.log(newLinkyData)
+}, 30000); // seconds
 
 const generateParabol = (sunSetTmp, sunRiseTmp) => {
   let tomorrowSunRise = new Date(sunRiseTmp*1000);

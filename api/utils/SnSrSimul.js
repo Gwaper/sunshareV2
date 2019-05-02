@@ -1,24 +1,14 @@
-exports.generateMockData = (data) => {
-  // let msg2 = {};
-  // let msg = {}
+exports.generateMockData = (SnSrSimul) => {
 
-  let SnSrSimul = data;
+  let timestamp = new Date().getTime();
+  let timeNow = new Date(timestamp + (new Date().getTime() - SnSrSimul.starttime)) ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
 
-  let secondMonth = 0;
-  let onTime= SnSrSimul.timestamp
-  //onTime + (new Date().getTime() - onTime)* 60;
-  // var timeNow = onTime.getTime() - 365*24*60*60*1000 + (msg.payload - onTime.getTime())*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
-
-  // var timeNow = 1524805200 + (new Date().getTime() - 1524805200) 12*60*60*1000) //*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
-  var timeNow = SnSrSimul.timestamp + (new Date().getTime() - SnSrSimul.starttime)*60 ; // // Recul d'un an dans le temps et accélération 1s = 1min => x60x15
-
-
-  timeNow = new Date(timeNow);
   let conso = 0;
   let soutir = 0;
   let inject = 0;
   let prod = 0;
   let autoconso = 0;
+  let secondMonth = 0;
 
   let rand = Math.random()/5;
   let rand1 = Math.round(Math.random());
@@ -27,7 +17,7 @@ exports.generateMockData = (data) => {
   let productible = 1200;
 
   let annee = timeNow.getFullYear();
-  let mois = timeNow.getMonth()+1 ;
+  let mois = timeNow.getMonth()+1;
   let jour = timeNow.getDate();
   let hours  = timeNow.getHours();
   let minutes = timeNow.getMinutes();
@@ -52,13 +42,16 @@ exports.generateMockData = (data) => {
   let LeverSoleil = new Date(annee, mois-1, jour, parseInt(SunCal[mois][2].substring(0,2)), parseInt(SunCal[mois][2].substring(2,4)), parseInt(SunCal[mois][2].substring(4,6)));
   let CoucherSoleil = new Date(annee, mois-1, jour, parseInt(SunCal[mois][3].substring(0,2)), parseInt(SunCal[mois][3].substring(2,4)), parseInt(SunCal[mois][3].substring(4,6)));
 
-  if (jour < 21) {let secondMonth = mois - 1;}
-      else {let secondMonth = mois + 1;}
+  if (jour < 21) {
+    secondMonth = mois - 1;
+  } else {
+    secondMonth = mois + 1;
+  }
   if (secondMonth == 13) {secondMonth= 1;}
   if (secondMonth === 0) {secondMonth= 12;}
 
   let dateNow = timeNow.getTime();
-  let millidate = SnSrSimul.timestamp;
+  let millidate = timestamp;
 
   if ((hours < 6 ) || (hours > 18)) {
     conso = ((dateNow - millidate)/1000)*rand;
@@ -97,20 +90,12 @@ exports.generateMockData = (data) => {
     }
   }
 
-  SnSrSimul.timestamp = timeNow.getTime();
-  SnSrSimul.time = timeNow;
   SnSrSimul.soutiridx = SnSrSimul.soutiridx + soutir;
   SnSrSimul.injectidx = SnSrSimul.injectidx + inject;
   SnSrSimul.prodidx = SnSrSimul.prodidx + prod;
   SnSrSimul.autoconsoidx = SnSrSimul.autoconsoidx + autoconso;
   SnSrSimul.prodmoyidx = SnSrSimul.prodmoyidx + prodmoy;
   SnSrSimul.prodmaxidx = SnSrSimul.prodmaxidx + prodmax;
-
-
-  // msg2.SnSrSimul = SnSrSimul;
-  // msg2.payload = 'SIMUL';
-  // msg2.count = SnSrSimul.prodidx;
-  // msg2.timenow = msg.timenow;
 
   return SnSrSimul;
 }
