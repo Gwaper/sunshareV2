@@ -1,4 +1,4 @@
-const utils = require('./utils/SnSrSimul.js/index.js.js.js');
+const utils = require('./utils/SnSrSimul.js');
 const config = require('./config.js');
 const express = require('express');
 const colors = require('colors');
@@ -68,13 +68,13 @@ app.listen(config.data.port, () => {
 
 setInterval(() => {
   let newLinkyData = utils.generateMockData(SnSrSimul);
-  if(historyLinkyData.length >= 5760) { //2*60*24*2
+  if(historyLinkyData.length >= config.data.history) { 
     historyLinkyData.splice(0,1);
   }
   historyLinkyData.push(newLinkyData);
   SnSrSimul = Object.assign({}, newLinkyData);
   console.log(newLinkyData)
-}, 30000); // seconds
+}, 300000);
 
 const generateParabol = (sunSetTmp, sunRiseTmp) => {
   let tomorrowSunRise = new Date(sunRiseTmp*1000);

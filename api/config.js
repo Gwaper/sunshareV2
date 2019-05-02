@@ -1,4 +1,4 @@
 exports.data = {
-  port: 8000,
-  history: 96 // 96 * 30 min
+  port: 3005,
+  history: 576 // each 5min 12*48h = 576
 }
